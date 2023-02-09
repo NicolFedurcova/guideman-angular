@@ -1,0 +1,11 @@
+.ng-valid {
+    border-left: 10px solid limegreen;
+}
+
+.ng-invalid {
+    border-left: 10px solid darkred;
+}
+
+body {
+    background-color: #dff0d7;
+}

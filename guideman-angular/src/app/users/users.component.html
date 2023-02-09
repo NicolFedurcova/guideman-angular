@@ -1,0 +1,65 @@
+
+
+<div *ngIf="!comunicationState" class="alert alert-danger" >
+    Comunication with server was not sucessful.
+</div>
+<div *ngIf="comunicationState" class="alert alert-success" >
+    Comunication with server was sucessful.
+</div>
+
+
+<h2>List of users:</h2>
+<table class="table table-hover">
+    <thead>
+        <tr class="bg-success">
+            <th>id</th>
+            <th>name</th>
+            <th>surname</th>
+            <th>email</th>
+            <th>tel number</th>
+            <th>birthdate</th>
+            <th>login</th>
+            <th>password</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users" (click)="selectUser(user)" >
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.telNumber}}</td>
+            <td>{{user.birthdate}}</td>
+            <td>{{user.login}}</td>
+            <td>{{user.password}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--
+<p *ngIf="usersJson">
+    {{usersJson}}
+</p>
+-->
+
+
+<h5>selected user to edit is: {{selectedUserLogin}}</h5>
+<h5>with id: {{selectedUserId}}</h5>
+
+
+<button type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="addUserButtonClicked()">
+    add user
+</button>
+
+<button [disabled]="!selectedUser" type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#deleteConfirm" (click)="deleteButtonClicked(selectedUser)">
+    remove user
+</button>
+
+
+<button [disabled]="!selectedUser" type="button" class="btn btn-success btn-lg" data-bs-toggle="modal" data-bs-target="#userEditModal" (click)="editUserClicked(selectedUser)">
+    edit user
+</button>
+
+
+
+<app-users-edit (savedUser)="editedUserSaved($event)" [user]="editedUser" [actionWithUser]="action" ></app-users-edit>

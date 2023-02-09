@@ -1,0 +1,76 @@
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" *ngIf="user">
+    <!-- Modal -->
+    <div class="modal fade" id="userEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{title}}</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body form-group">
+                    <p *ngIf="actionWithUser=='edit'">actual user info:</p>
+                    <p *ngIf="actionWithUser=='add'">please fill fields</p>
+                    <label *ngIf="actionWithUser=='add'"> Id:</label> <input [disabled]="actionWithUser"
+                        class="form-control" type="text" [(ngModel)]="user.id" name="userId" #idModel="ngModel">
+
+                    <label> Name:</label> <input class="form-control" type="text" [(ngModel)]="user.name"
+                        name="userName" required #nameModel="ngModel">
+                    <div [hidden]="nameModel.valid">Name cannot be empty</div>
+
+                    <label> Surname:</label> <input class="form-control" type="text" [(ngModel)]="user.surname"
+                        name="userSurname" required #surnameModel="ngModel">
+                    <div [hidden]="surnameModel.valid">Surname cannot be empty</div>
+
+                    <label> Email:</label> <input class="form-control" type="text" [(ngModel)]="user.email"
+                        name="userEmail" required #emailModel="ngModel">
+                    <div [hidden]="emailModel.valid">Email cannot be empty</div>
+
+                    <label> Tel. Number:</label> <input class="form-control" type="text" [(ngModel)]="user.telNumber"
+                        name="userTelNumber" #telNumberModel="ngModel">
+                    <div [hidden]="telNumberModel.valid">Tel. Number cannot be empty</div>
+
+                    <label> Birthdate:</label> <input class="form-control" type="text" [(ngModel)]="user.birthdate"
+                        name="userBirthdate" required #birthdateModel="ngModel">
+                    <div [hidden]="birthdateModel.valid">Birthdate cannot be empty</div>
+
+                    <label> Login:</label> <input class="form-control" type="text" [(ngModel)]="user.login"
+                        name="userLogin" required #loginModel="ngModel">
+                    <div [hidden]="loginModel.valid">Login cannot be empty</div>
+
+                    <label> Heslo:</label> <input class="form-control" type="text" [(ngModel)]="user.password"
+                        name="userPassword" required minlength="4" #passwordModel="ngModel">
+                    <div [hidden]="passwordModel.valid">Password has to have at least 4 characters</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success"data-bs-dismiss="modal"
+                        [disabled]="!userForm.form.valid">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form (ngSubmit)="onSubmit()" #userForm="ngForm" *ngIf="user">
+    <!-- Modal HTML -->
+    <div id="deleteConfirm" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">User will be deleted</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete user? Action cannot be undone.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"  data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

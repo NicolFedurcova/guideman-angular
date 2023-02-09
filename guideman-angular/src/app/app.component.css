@@ -1,0 +1,22 @@
+.all {
+    background-size: 150%;
+    background-color: rgb(231, 231, 231);
+}
+
+.top {
+    color:rgb(24, 16, 5);
+    size: 50em;
+    background-color: rgb(164, 206, 135);
+    height: 25vh;
+	align-items: center;
+	justify-content: center;
+	text-align: justify;
+	display: flex;
+}
+
+#logo {
+	max-width: 90px;
+	width: 100%;
+	height: auto;
+}
+

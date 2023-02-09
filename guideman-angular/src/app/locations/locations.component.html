@@ -1,0 +1,33 @@
+
+<h2>List of locations:</h2>
+<table class="table table-hover">
+    <thead>
+        <tr class="bg-success">
+            <th>id</th>
+            <th>country</th>
+            <th>city</th>
+            <th>street</th>
+            <th>street number</th>
+          
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let location of locations" (click)="selectLocation(location)" >
+            <td>{{location.id}}</td>
+            <td>{{location.country}}</td>
+            <td>{{location.city}}</td>
+            <td>{{location.street}}</td>
+            <td>{{location.street_number}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<!--
+<p *ngIf="locationsJson">
+    {{usersJson}}
+</p>
+-->
+
+<h5>selected location is: {{selectedLocationRepr}}</h5>
+
+
